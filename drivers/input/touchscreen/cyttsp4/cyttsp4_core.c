@@ -1075,8 +1075,8 @@ static void cyttsp4_queue_startup_(struct cyttsp4_core_data *cd)
 		schedule_work(&cd->startup_work);
 		dev_info(cd->dev, "%s: cyttsp4_startup queued\n", __func__);
 	} else {
-		dev_dbg(cd->dev, "%s: bypassed because startup_state = %s\n", __func__,
-			ss2str(cd->startup_state));
+		dev_dbg(cd->dev, "%s: bypassed because startup_state = %d\n", __func__,
+			cd->startup_state);
 	}
 }
 
@@ -1966,8 +1966,8 @@ static int _cyttsp4_exec_cmd(struct cyttsp4_core_data *cd, u8 mode,
 		return rc;
 	}
 
-	dev_dbg(dev, "%s: cmd=%s rc=%d\n", __func__, 
-		cy_cmd_str(mode, cmd_buf[0]), rc);
+	dev_dbg(dev, "%s: rc=%d\n",
+		 __func__, rc);
 	return 0;
 }
 
